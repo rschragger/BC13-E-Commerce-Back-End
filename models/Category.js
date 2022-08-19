@@ -18,6 +18,8 @@ Category.init(
     category_name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true ,//Added unique here so there aren't multiple "socks" categories
+
     },
   },
   {
