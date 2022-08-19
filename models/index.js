@@ -23,9 +23,9 @@ Tag.belongsToMany(Product,{
 })
 
 //Learned syntax for MtoM from https://sebhastian.com/sequelize-belongstomany/#:~:text=The%20Sequelize%20belongsToMany()%20method%20is%20used%20to%20create%20a,primary%20keys%20of%20both%20models.
-await Product.sync();
-await ProductTag.sync();
-await Tag.sync();
+//await Product.sync();
+//await ProductTag.sync();
+//await Tag.sync();
 
 
 
