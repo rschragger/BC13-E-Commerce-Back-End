@@ -119,9 +119,13 @@ router.delete('/:id', async (req, res) => {
   // delete one product by its `id` value
   try {
     const productDelete = await Product.destroy({
-      where: { id:req.params.id }
+      where: { id: req.params.id }
     })
-    if (!productDelete) { res.status(404).json({ message: `Product with ID: ${req.params.id} did not exist, so no deletion occured` }) }
+    if (!productDelete) {
+      res.status(404).json({ message: `Product with ID: ${req.params.id} did not exist, so no deletion occured` });
+      return
+    }
+    res.status(200).json(productDelete);
   } catch (err) {
     res.status(400).json("Product Delete error: " + err)
   }

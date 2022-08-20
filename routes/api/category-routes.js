@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
     });
     res.status(200).json(addCategoryData)
   } catch (err) {
-    res.status(300).json({ message: `Add category data: ${err}` });
+    res.status(400).json({ message: `Add category data: ${err}` });
   }
 });
 
@@ -53,12 +53,12 @@ router.put('/:id', async (req, res) => {
       category_name: req.body.category_name,
     }, {
       where: {
-        id: req.body.id
+        id: req.params.id
       }
     });
     res.status(200).json(updateCategoryData)
   } catch (err) {
-    res.status(300).json({ message: `Update category data: ${err}` });
+    res.status(400).json({ message: `Update category data: ${err}` });
   }
 });
 
@@ -77,7 +77,7 @@ router.delete('/:id', async (req, res) => {
     res.status(200).json(deleteCat)
 
   } catch (err) {
-    res.status(300).json({ message: `Delete category data: ${err}` });
+    res.status(400).json({ message: `Delete category data: ${err}` });
   }
 });
 
