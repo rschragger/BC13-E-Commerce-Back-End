@@ -23,9 +23,9 @@ router.get('/:id', async (req, res) => {
       req.params.id, {
       include: [{ model: Product }],
     });
-    if(!categoryData){
+    if (!categoryData) {
       res.status(404).json({ message: `No category found for id ${req.params.id}` });
-    return;
+      return;
     }
     res.status(200).json(categoryData);
   } catch (err) {
@@ -36,45 +36,48 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   // create a new category
   try {
-    const addCategoryData = await Category.create({
-      category_name : req.body.category_name,
-    }, { fields: ['category_name'] }); //do not allow 'id' to be sent in body
+    const addCategoryData = await Category.findOrCreate({
+      where:{category_name: req.body.category_name,},
+      // }, { fields: ['category_name'] }); //do not allow 'id' to be sent in body //read about findOrCreate()
+    });
     res.status(200).json(addCategoryData)
   } catch (err) {
-    res.status(300).json({message:`Add category data: ${err}`});
+    res.status(300).json({ message: `Add category data: ${err}` });
   }
 });
 
-router.put('/:id',async (req, res) => {
+router.put('/:id', async (req, res) => {
   // update a category by its `id` value
   try {
     const updateCategoryData = await Category.update({
-      category_name : req.body.category_name,
+      category_name: req.body.category_name,
     }, {
       where: {
         id: req.body.id
-      }});
+      }
+    });
     res.status(200).json(updateCategoryData)
   } catch (err) {
-    res.status(300).json({message:`Update category data: ${err}`});
+    res.status(300).json({ message: `Update category data: ${err}` });
   }
 });
 
-router.delete('/:id',async (req, res) => {
+router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value
   try {
     const deleteCat = await Category.destroy({
-      where:{
-        id:req.params.id
-      }});
-      if (!deleteCat) {
-        res.status(404).json({ message: `No category found with id ${req.params.id}!` });
-        return;
+      where: {
+        id: req.params.id
       }
-      res.status(200).json(deleteCat)
+    });
+    if (!deleteCat) {
+      res.status(404).json({ message: `No category found with id ${req.params.id}!` });
+      return;
+    }
+    res.status(200).json(deleteCat)
 
   } catch (err) {
-    res.status(300).json({message:`Delete category data: ${err}`});
+    res.status(300).json({ message: `Delete category data: ${err}` });
   }
 });
 
