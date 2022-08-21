@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test HTML</title>
+    <style>
+        td,
+        th {
+            border: 1pt solid black;
+        }
+
+        th {
+            color: white;
+            background-color: grey;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="testDiv"></div>
+    <!-- <table>
+        <tr>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+        </tr>
+        <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>c</td>
+        </tr>
+    </table> -->
+</body>
+
+<script>
+    var testDiv = document.getElementById('testDiv')
+
+    getProducts = async () => {
+        const settings = {
+            method: 'GET',
+        };
+        try {
+            const fetchResponse = await fetch('/api/products', settings);
+            const data = await fetchResponse.json();
+            //console.log(data[0].product_name)
+            let newArray = [];
+            const newTable = data.forEach(element => {
+                let tagsString = element.tags.map(x => x.tag_name).join(', ');
+                newArray.push({
+                    product: element.product_name,
+                    price: element.price,
+                    stock: element.stock,
+                    tags: element.tags.map(x => x.tag_name).join(', '),
+                    category: element.category.category_name
+                })
+
+            });
+            //console.table(data)
+            console.table(newArray)
+            testDiv.innerHTML = makeTable(newArray) //JSON.stringify(newArray)
+            //return data
+        } catch (err) {
+            console.log(err);
+        }
+
+    }
+    const makeRow = (array, type) => {
+        midSection = array.join(`</${type}><${type}>`);
+        return ` <tr><${type}>${midSection}</${type}></tr>`
+    }
+
+    const makeTable = (arr) => {
+        //make header
+        var tableHtml = makeRow(Object.keys(arr[0]), 'th')
+        // Add rows
+        const tableRowsHtml = arr.forEach(element => {
+            tableHtml += makeRow(Object.values(element), 'td')
+        });
+        return `<table>${tableHtml}</table>`;
+    }
+
+    getProducts()
+
+</script>
+
+</html>

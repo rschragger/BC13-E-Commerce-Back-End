@@ -20,7 +20,8 @@
   
   ## Installation
    
-  Installation Instructions: Clone/Fork coe from 
+  Installation Instructions: 
+  - Clone/Fork code from [github.com/rschragger/BC13-E-Commerce-Back-End](https://github.com/rschragger/BC13-E-Commerce-Back-End)
   
   ## Usage
    
@@ -38,24 +39,22 @@
   
   Third Party Assets
 - Node modules
-- 	express
-- 	sequelize
-- 	dotenv
-- 	mysql2
+  - express
+  - sequelize
+  - dotenv
+  - mysql2
 </p>
   
   Tutorials
 - sequelize.org/docs
-- https://developer.mozilla.org/en-US/
--  W3 Schools
--  Stack overflow
+- developer.mozilla.org
+- W3 Schools
+- Stack overflow
 </p>
   
   ## License
    
-  This application is licensed under Creative Commons
-
-  CC0
+  This application is licensed under Creative Commons - CC0
   
   ## Features
    
@@ -71,7 +70,7 @@
   ## Questions
    
   
-  ### Contacts
+  ## Contacts
    
   You can reach me for additional questions at:
   - Email: [reeveschragger@gmail.com](mailto:reeveschragger@gmail.com)
