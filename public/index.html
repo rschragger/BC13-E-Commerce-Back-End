@@ -7,9 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test HTML</title>
     <style>
+        *{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
         td,
         th {
             border: 1pt solid black;
+            padding: 4px;
         }
 
         th {
@@ -20,19 +24,8 @@
 </head>
 
 <body>
+    <h1>Results table</h1>
     <div id="testDiv"></div>
-    <!-- <table>
-        <tr>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-        </tr>
-        <tr>
-            <td>a</td>
-            <td>b</td>
-            <td>c</td>
-        </tr>
-    </table> -->
 </body>
 
 <script>
@@ -51,7 +44,7 @@
                 let tagsString = element.tags.map(x => x.tag_name).join(', ');
                 newArray.push({
                     product: element.product_name,
-                    price: element.price,
+                    price: element.price.toLocaleString("en-AU", {style: "currency", currency: "AUD", minimumFractionDigits: 2}),
                     stock: element.stock,
                     tags: element.tags.map(x => x.tag_name).join(', '),
                     category: element.category.category_name

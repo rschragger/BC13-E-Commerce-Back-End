@@ -14,23 +14,34 @@
   - [License](#license)
   - [Features](#features)
       - [Contributions](#contributions)
-  - [Tests](#tests)
-  - [Questions](#questions)
-      - [Contacts](#contacts)
+  - [Contacts](#contacts)
   
   ## Installation
    
   Installation Instructions: 
   - Clone/Fork code from [github.com/rschragger/BC13-E-Commerce-Back-End](https://github.com/rschragger/BC13-E-Commerce-Back-End)
+  - Duplicate the `.envEXAMPLE` file, rename to `.env` and fill in your user and password for access to your Mysql
+  - Acess root level from Command Line Interface
+  - Use Mysql from your preferred user (normally root) `mysql -u root -p`
+  - Run `source db/schema.sql;`
+  - Run `exit` to leave Mysql
+  - Run `node seeds/index.js` to seed the databases
+  - Run `npm start` to get backend operating
+  - Use Insomnia (or similar app) to run API calls 
   
   ## Usage
    
-  Usage Instructions: Run `npm start`
+  Usage Instructions:
+  - See Installation Instructions above 
+  - See below video for how to access
+
+  Screencast video had to be done in 2 parts. Please view both
+
+-  [PART 1 - https://drive.google.com/file/d/1QZpOYLTt-HSZvggDMpNRPoJYZ_Tb7KVE/view](https://drive.google.com/file/d/1QZpOYLTt-HSZvggDMpNRPoJYZ_Tb7KVE/view)
+- [PART 2 - https://drive.google.com/file/d/1zZtzGFD4MRLo4ShsJtZEwRejdZAL5RNV/view](https://drive.google.com/file/d/1zZtzGFD4MRLo4ShsJtZEwRejdZAL5RNV/view)
   
   ## Credits
-   
   
-
   Languages
 - JavaScript
 - MySQL
@@ -43,6 +54,8 @@
   - sequelize
   - dotenv
   - mysql2
+  - console.table
+- Insomnia
 </p>
   
   Tutorials
@@ -57,18 +70,13 @@
   This application is licensed under Creative Commons - CC0
   
   ## Features
-   
+   Added a simple HTML table that is made from a sequelize query that shows all products and the tags amd categories that are linked from it. 
   
   ### Contributions
    
   Contribution guidelines: Student submission and unlikely to progess
   
-  ## Tests
-  
-  
-  
-  ## Questions
-   
+
   
   ## Contacts
    
